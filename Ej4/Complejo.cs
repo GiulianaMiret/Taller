@@ -8,15 +8,14 @@ namespace Ej4
 {
     class Complejo
     {
-        private double iReal;
-        private double iImaginario;
+        private readonly double iReal;
+        private readonly double iImaginario;
         
         public Complejo(double pReal, double pImaginario)
         {
             this.iReal = pReal;
             this.iImaginario = pImaginario;
         }
-
 
         public double Real
         {
@@ -53,9 +52,7 @@ namespace Ej4
 
         public Complejo Conjugado()
         {
-            Complejo num = new Complejo(0,0);
-            num.iImaginario = -this.iImaginario;
-            num.iReal = this.iReal;
+            Complejo num = new Complejo(this.iReal, -this.iImaginario);
             return num;
         }
 
@@ -69,27 +66,19 @@ namespace Ej4
 
         public bool EsReal()
         {
-            if(this.iImaginario == 0)
-            {
-                return true;
-            }
-            return false;
+            return (this.iImaginario == 0);
         }
 
         public bool EsImaginario()
         {
-            if(this.iReal == 0)
-            {
-                return true;
-            }
-            return false;
+            return (this.iReal == 0);
         }
 
-        public bool EsIgual (Complejo pOtroComplejo)
+        private static bool EsIgual (Complejo pOtroComplejo)
         {
-            if (this.iImaginario == pOtroComplejo.iImaginario)
+            if (iImaginario == pOtroComplejo.iImaginario)
             {
-                if (this.iReal == pOtroComplejo.iReal)
+                if (iReal == pOtroComplejo.iReal)
                 {
                     return true;
                 }
@@ -98,8 +87,9 @@ namespace Ej4
             return false;
         }
 
-        public bool EsIgual (double pReal, double pImaginario)
+        private static bool EsIgual (double pReal, double pImaginario)
         {
+            //return (this.iReal == pReal );
             if (this.iReal == pReal)
             {
                 if (this.iImaginario == pImaginario)
@@ -113,28 +103,24 @@ namespace Ej4
 
         public Complejo Sumar (Complejo pOtroComplejo)
         {
-            Complejo num = new Complejo(0,0);
-            num.iReal = this.iReal + pOtroComplejo.iReal;
-            num.iImaginario = this.iImaginario + pOtroComplejo.iImaginario;
+            Complejo num = new Complejo(this.iReal + pOtroComplejo.iReal, this.iImaginario + pOtroComplejo.iImaginario);
             return num;
         }
 
         public Complejo Restar (Complejo pOtroComplejo)
         {
-            Complejo num = new Complejo(0, 0);
-            num.iReal = this.iReal - pOtroComplejo.iReal;
-            num.iImaginario = this.iImaginario - pOtroComplejo.iImaginario;
+            Complejo num = new Complejo(this.iReal - pOtroComplejo.iReal, this.iImaginario - pOtroComplejo.iImaginario);
             return num;
         }
 
         public Complejo MultiplicarPor (Complejo pOtroComplejo)
         {
             // (a + bi) · (c + di) = (ac − bd) + (ad + bc)i
-            Complejo num = new Complejo(0, 0);
-            num.iReal = this.iReal * pOtroComplejo.iReal;
-            num.iReal -= this.iImaginario * pOtroComplejo.iImaginario;
-            num.iImaginario = this.iReal * pOtroComplejo.iImaginario;
-            num.iImaginario += this.iImaginario * pOtroComplejo.iReal;
+            double auxReal = this.iReal * pOtroComplejo.iReal;
+            auxReal = auxReal - this.iImaginario * pOtroComplejo.iImaginario;
+            double auxImag = this.iReal * pOtroComplejo.iImaginario;
+            auxImag = auxImag + this.iImaginario * pOtroComplejo.iReal;
+            Complejo num = new Complejo(auxReal, auxImag);
             return num;
         }
 
@@ -142,11 +128,11 @@ namespace Ej4
         {
             //(a+bi) = ac+bd   +   bc-ad i
             //(c+di)   cc+dd       cc+dd
-            Complejo num = new Complejo(0, 0);
-            num.iReal = this.iReal * pOtroComplejo.iReal + this.iImaginario * pOtroComplejo.iImaginario;
-            num.iReal = num.iReal / (Math.Pow(pOtroComplejo.iReal, 2) + Math.Pow(pOtroComplejo.iImaginario, 2));
-            num.iImaginario = this.iImaginario * pOtroComplejo.iReal - this.iReal * pOtroComplejo.iImaginario;
-            num.iImaginario = num.iImaginario / (Math.Pow(pOtroComplejo.iReal, 2) + Math.Pow(pOtroComplejo.iImaginario, 2));
+            double auxReal = this.iReal * pOtroComplejo.iReal + this.iImaginario * pOtroComplejo.iImaginario;
+            auxReal = auxReal  / (Math.Pow(pOtroComplejo.iReal, 2) + Math.Pow(pOtroComplejo.iImaginario, 2));
+            double auxImag = this.iImaginario * pOtroComplejo.iReal - this.iReal * pOtroComplejo.iImaginario;
+            auxImag = auxImag / (Math.Pow(pOtroComplejo.iReal, 2) + Math.Pow(pOtroComplejo.iImaginario, 2));
+            Complejo num = new Complejo(auxReal, auxImag);
             return num;
         }
     }
