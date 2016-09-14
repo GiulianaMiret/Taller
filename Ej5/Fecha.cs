@@ -8,19 +8,6 @@ namespace Ej5
 {
     class Fecha
     {
-        private readonly string iDia;
-        private readonly string iMes;
-        private readonly string iAnio;
-
-        public string AgregarDia (string pDia)
-        {
-            
-
-        }
-        public string idias { get; }
-        public string imes { get; }
-        public string ianio { get; }
-
         private const int Anio_Base = 1900;
         private const int Anio_Max = 2499;
         private static readonly int[] Cant_Dias_Mes = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -39,27 +26,27 @@ namespace Ej5
         }
         public Fechas AgregarDias(int pCantidadDias)
         {
-            return
+			return;
         }
 
-        public Fechas(string fdias, string fmes, string fanio)//Constructor.
+        public Fecha(string fdias, string fmes, string fanio)//Constructor.
         {
-            idias = fdias;
-            imes = fmes;
-            ianio = fanio;
+            this.iDias = fdias;
+            this.iMes = fmes;
+            this.iAnio = fanio;
         }
 
         public string dias//Propiedad.
         {
-            get { return this.idias; }
+            get { return this.iDias; }
         }
         public string mes//Propiedad.
         {
-            get { return this.imes; }
+            get { return this.iMes; }
         }
         public string anio//Propiedad.
         {
-            get { return this.ianio; }
+            get { return this.iAnio; }
         }
         //string.Format nos permita formatea una cadena de caracteres .
         public int CompararFecha(Fechas Fech)
