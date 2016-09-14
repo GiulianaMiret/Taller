@@ -8,5 +8,14 @@ namespace Ej5
 {
     class Fecha
     {
+        private readonly string iDia;
+        private readonly string iMes;
+        private readonly string iAnio;
+
+        public string AgregarDia (string pDia)
+        {
+            
+
+        }
     }
 }
