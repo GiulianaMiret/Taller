@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C904B40C-ACA5-471A-AB5D-9196F0262165}</ProjectGuid>
+    <ProjectGuid>{4BCA20B0-6C42-472D-A6FF-587FBB53DD38}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ej4</RootNamespace>
-    <AssemblyName>Ej4</AssemblyName>
+    <RootNamespace>Ejercicio4_TP2</RootNamespace>
+    <AssemblyName>Ejercicio4_TP2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

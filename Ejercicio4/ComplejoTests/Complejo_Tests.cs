@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Ej4;
+using Ejercicio4_TP2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +14,9 @@ namespace Ejercicio4_TP2.Tests
         [TestMethod()]
         public void ArgumentoEnRadianesTest()   //Problemas
         {
-            Complejo numero = new Complejo(1, 1);
+            Complejo numero = new Complejo(1,1);
             double retorna = numero.ArgumentoEnRadianes();
-            double esperado = Math.Atan(1 / 1);
+            double esperado = Math.Atan(1/ 1);
             Assert.AreEqual(esperado, retorna);
         }
 
@@ -30,7 +30,7 @@ namespace Ejercicio4_TP2.Tests
         }
 
         [TestMethod()]
-        public void ConjugadoTest()
+        public void ConjugadoTest()  
         {
             Complejo numero = new Complejo(4, 4 * Math.Sqrt(3));
             Complejo retorna = numero.Conjugado();
@@ -90,7 +90,7 @@ namespace Ejercicio4_TP2.Tests
         }
 
         [TestMethod()]
-        public void SumarTest()
+        public void SumarTest()    
         {
             Complejo numero = new Complejo(4, 5);
             Complejo numASumar = new Complejo(4, 6);
@@ -101,7 +101,7 @@ namespace Ejercicio4_TP2.Tests
         }
 
         [TestMethod()]
-        public void RestarTest()
+        public void RestarTest()  
         {
             Complejo numero = new Complejo(4, 5);
             Complejo numARestar = new Complejo(4, 6);
@@ -112,7 +112,7 @@ namespace Ejercicio4_TP2.Tests
         }
 
         [TestMethod()]
-        public void MultiplicarPorTest()
+        public void MultiplicarPorTest()        
         {
             Complejo numero = new Complejo(4, 5);
             Complejo numMultip = new Complejo(4, 6);
@@ -123,7 +123,7 @@ namespace Ejercicio4_TP2.Tests
         }
 
         [TestMethod()]
-        public void DividirPorTest()
+        public void DividirPorTest()    
         {
             Complejo numero = new Complejo(3, 2);
             Complejo numDivisor = new Complejo(1, -2);
