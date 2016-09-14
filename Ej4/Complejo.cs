@@ -29,24 +29,33 @@ namespace Ej4
 
         public double ArgumentoEnRadianes ()
         {
-            double num = Math.Atan(this.iReal / this.iImaginario);
-            if (this.iImaginario < 0)
+            double num = Math.Atan(this.iImaginario / this.iReal);
+            if (this.iImaginario >= 0)
             {
-                num = (-180/2) - num;
-                num = (num * Math.PI)/180;
+                if (this.iReal < 0) { num = 180 - num; }
+                //else { }
             }
-            else {num = (180/2) - num; num = (num* Math.PI)/180;}
-            return num;
+            else
+            {
+                if (this.iReal < 0) { num = 180 + num; }
+                else { num = 360 - num; }
+            }
+            return num = (num * Math.PI) / 180;
         }
 
         public double ArgumentEnGrados()
         {
-            double num = Math.Atan(this.iReal / this.iImaginario);
-            if (this.iImaginario < 0)
+            double num = Math.Atan(this.iImaginario / this.iReal);
+            if (this.iImaginario >= 0)
             {
-                num = (-180/2) - num;
+                if (this.iReal < 0) { num = 180 - num; }
+                //else { }
             }
-            else {num = (180/2) - num;}
+            else
+            {
+                if(this.iReal < 0) { num = 180 + num; }
+                else { num = 360 - num; }
+            }
             return num;
         }
 
@@ -74,7 +83,7 @@ namespace Ej4
             return (this.iReal == 0);
         }
 
-        private static bool EsIgual (Complejo pOtroComplejo)
+        public bool EsIgual (Complejo pOtroComplejo)
         {
             if (iImaginario == pOtroComplejo.iImaginario)
             {
@@ -87,7 +96,7 @@ namespace Ej4
             return false;
         }
 
-        private static bool EsIgual (double pReal, double pImaginario)
+        private bool EsIgual (double pReal, double pImaginario)
         {
             //return (this.iReal == pReal );
             if (this.iReal == pReal)
