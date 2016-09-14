@@ -12,6 +12,10 @@ namespace Ej5
         private readonly string iMes;
         private readonly string iAnio;
 
-        
+        public string AgregarDia (string pDia)
+        {
+            
+
+        }
     }
 }
