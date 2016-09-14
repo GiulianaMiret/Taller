@@ -24,10 +24,31 @@ namespace Ej5
             { int mCantidadDias -= 1; }
 
         }
+		private static int CalcularCantidadDiasAnio(int anio){
+			int cantidadDias = 365;
+
+			if Fecha.EsBisiesto(anio){
+				cantidadDias++;
+			}
+
+			return cantidadDias;
+		}
+
         public Fechas AgregarDias(int pCantidadDias)
         {
 			return;
         }
+
+		public Fecha AgregarAnios(int pAnios)
+		{
+			int cantidadDias = 0;
+
+			for (int indice = 1; indice < pAnios; indice++) {
+				cantidadDias += Fecha.CalcularCantidadDiasAnio (this.iAnio + indice);
+			}
+
+			return new Fecha (this.iCantidadDias + cantidadDias);
+		}
 
         public Fecha(string fdias, string fmes, string fanio)//Constructor.
         {
@@ -35,6 +56,21 @@ namespace Ej5
             this.iMes = fmes;
             this.iAnio = fanio;
         }
+
+		public Fecha(long pCantidadDias){
+			if (pCantidadDias < 1 || pCantidadDias > 219146) {
+				throw new ArgumentException ("La cantidad de dias debe estar comprendida entre 1 y 219146");
+			}
+			this.iCantidadDias = pCantidadDias;
+			int anioActual = Anio_Base;
+			int mCantidadDiasAñoActual = Fecha.CalcularCantidadDiasAnio (anioActual);
+
+			while (pCantidadDias > mCantidadDiasAñoActual) {
+				anioActual++;
+				pCantidadDias -= mCantidadDiasAñoActual;
+				mCantidadDiasAñoActual = Fecha.CalcularCantidadDiasAnio (anioActual);
+			}
+		}
 
         public string dias//Propiedad.
         {
@@ -62,8 +98,12 @@ namespace Ej5
         {
 
         }
-        public string agregaranio(string dia) //Metodo.
+        public string AgregarAnios(int pAnio) //Metodo.
         {
-
+			int cantidadDias = 0;
+			for (int indice = 1; indice <= pAnio; indice++) {
+				cantidadDias += Fecha.CalcularCantidadDiasAño(this.iAnio + indice);
+			}
+			return new Fecha (this.iCantidadDias + cantidadDias);
         }
     }
