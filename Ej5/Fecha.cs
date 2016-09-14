@@ -94,10 +94,28 @@ namespace Ej5
         {
 
         }
-        public string agregarmes(string dia) //Metodo.
-        {
-
+        
+        public Fecha AgregarMeses(int cantMes)
+          {
+             int cantDias = 0;
+             int mesActual = this.iMes;
+             int añoActual = this.iAño;
+             for (int i = 1; i <= cantMes; i++)
+            {
+                 if (mesActual == 12)
+                 {
+                     mesActual = 1;
+                     añoActual += 1;
+                 }
+                else
+                 {
+                     mesActual += 1;
+                 }
+                 cantDias += Fecha.CalcularCantidadDiasMes(mesActual, añoActual);
+             }
+             return new Fecha(this.iCantidadDias + cantDias);
         }
+
         public string AgregarAnios(int pAnio) //Metodo.
         {
 			int cantidadDias = 0;
