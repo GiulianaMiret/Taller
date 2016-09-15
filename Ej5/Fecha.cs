@@ -28,7 +28,43 @@ namespace Ej5
             
         }
 
-        private static CantidadDiasDelMes
+        private static int CantidadDiasDelMes (int mes, int año)
+        {
+            int cantidadDias = Cant_Dias_Mes[mes];
+            if(mes == 2 && DateTime.IsLeapYear(año))
+            {
+                cantidadDias++;
+            }
+            return cantidadDias;
+        }
+
+        private static int CantidadDiasDelAño (int año)
+        {
+            int cantidadDias = 365;
+            if (DateTime.IsLeapYear(año))
+            {
+                cantidadDias++;
+            }
+            return cantidadDias;
+        }
+
+        public Fecha AgregarDia (int cantidadDias)
+        {
+            DateTime aux = this.iFecha.AddDays(cantidadDias);
+            return new Fecha(aux.Day, aux.Month, aux.Year);
+        }
+
+        public Fecha AgregarMes (int cantdadMeses)
+        {
+            DateTime aux = this.iFecha.AddMonths(cantdadMeses);
+            return new Fecha(aux.Day, aux.Month, aux.Year);
+        }
+
+        public Fecha AgregarAño (int cantidadAños)
+        {
+            DateTime aux = this.iFecha.AddYears(cantidadAños);
+            return new Fecha(aux.Day, aux.Month, aux.Year);
+        }
 
         /*private const int Anio_Base = 1900;
         private const int Anio_Max = 2499;
