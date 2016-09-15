@@ -8,10 +8,31 @@ namespace Ej5
 {
     class Fecha
     {
-        private const int Anio_Base = 1900;
-        private const int Anio_Max = 2499;
+        private readonly DateTime iFecha;
+        /*private readonly int iDia;
+        private readonly int iMes;
+        private readonly int iAño;*/
         private static readonly int[] Cant_Dias_Mes = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
         private static readonly int[] ClaveMes = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        private static readonly String[] DIA_SEMANA = { "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" };
+
+        public Fecha (int dia, int mes, int año)
+        {
+            if (mes > 0 || mes < 13)
+            {
+                if (dia > 0 || dia <= CantidadDiasDelMes(mes,año))
+                {
+                    this.iFecha = new DateTime(año, mes, dia);
+                }
+            }
+            
+        }
+
+        private static CantidadDiasDelMes
+
+        /*private const int Anio_Base = 1900;
+        private const int Anio_Max = 2499;
+        
         private readonly long iCantidadDias;
         private readonly int iDia;
         private readonly int iMes;
@@ -124,4 +145,6 @@ namespace Ej5
 			}
 			return new Fecha (this.iCantidadDias + cantidadDias);
         }
+        */
     }
+}
