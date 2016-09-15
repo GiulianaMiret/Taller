@@ -12,9 +12,24 @@ namespace Ej5
         /*private readonly int iDia;
         private readonly int iMes;
         private readonly int iAño;*/
-        private static readonly int[] Cant_Dias_Mes = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        private static readonly int[] DiasMes = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
         private static readonly int[] ClaveMes = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        private static readonly String[] DIA_SEMANA = { "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" };
+        private static readonly String[] DIASEMANA = { "Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" };
+
+        public int Dia
+        {
+            get { return this.iFecha.Day; }
+        }
+
+        public int Mes
+        {
+            get { return this.iFecha.Month; }
+        }
+
+        public int Año
+        {
+            get { return this.iFecha.Year; }
+        }
 
         public Fecha (int dia, int mes, int año)
         {
@@ -28,9 +43,27 @@ namespace Ej5
             
         }
 
+        public Fecha AgregarDia(int cantidadDias)
+        {
+            DateTime aux = this.iFecha.AddDays(cantidadDias);
+            return new Fecha(aux.Day, aux.Month, aux.Year);
+        }
+
+        public Fecha AgregarMes(int cantdadMeses)
+        {
+            DateTime aux = this.iFecha.AddMonths(cantdadMeses);
+            return new Fecha(aux.Day, aux.Month, aux.Year);
+        }
+
+        public Fecha AgregarAño(int cantidadAños)
+        {
+            DateTime aux = this.iFecha.AddYears(cantidadAños);
+            return new Fecha(aux.Day, aux.Month, aux.Year);
+        }
+
         private static int CantidadDiasDelMes (int mes, int año)
         {
-            int cantidadDias = Cant_Dias_Mes[mes];
+            int cantidadDias = DiasMes[mes];
             if(mes == 2 && DateTime.IsLeapYear(año))
             {
                 cantidadDias++;
@@ -48,22 +81,20 @@ namespace Ej5
             return cantidadDias;
         }
 
-        public Fecha AgregarDia (int cantidadDias)
+        public string DiaDeLaSemana ()
         {
-            DateTime aux = this.iFecha.AddDays(cantidadDias);
-            return new Fecha(aux.Day, aux.Month, aux.Year);
+            DateTime aux = this.iFecha;
+            return DIASEMANA[Convert.ToInt32(aux.DayOfWeek)];
         }
 
-        public Fecha AgregarMes (int cantdadMeses)
+        public bool EsBiciesto ()
         {
-            DateTime aux = this.iFecha.AddMonths(cantdadMeses);
-            return new Fecha(aux.Day, aux.Month, aux.Year);
+            return DateTime.IsLeapYear(this.iFecha.Year);
         }
 
-        public Fecha AgregarAño (int cantidadAños)
+        public bool CompararFechas (Fecha fecha)
         {
-            DateTime aux = this.iFecha.AddYears(cantidadAños);
-            return new Fecha(aux.Day, aux.Month, aux.Year);
+            return Convert.ToBoolean(this.iFecha.CompareTo(fecha.iFecha));
         }
 
         /*private const int Anio_Base = 1900;
