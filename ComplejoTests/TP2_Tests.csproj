@@ -52,9 +52,14 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Complejo_Tests.cs" />
+    <Compile Include="Fecha_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ej5\Ej5.csproj">
+      <Project>{a511529b-3ab3-4bf1-8fb5-d060aa2c0430}</Project>
+      <Name>Ej5</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ejercicio4_TP2\Ejercicio4_TP2.csproj">
       <Project>{4BCA20B0-6C42-472D-A6FF-587FBB53DD38}</Project>
       <Name>Ejercicio4_TP2</Name>
